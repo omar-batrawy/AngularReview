@@ -1,7 +1,7 @@
 <div class="loginForm">
   <div class="logincss">
     <h1 class="centertitle">Login</h1>
-    <form (ngSubmit)="onSubmit()" class="gap">
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="gap">
       <div class="inputlable">
         <label for="username">Username</label>
         <input type="text" id="username" formControlName="username" />
@@ -10,9 +10,7 @@
         <label for="password">Password</label>
         <input type="password" id="password" formControlName="password" />
       </div>
-      <button type="submit" class="buttondesign" [disabled]="!loginForm.valid">
-        Login
-      </button>
+      <button type="submit" class="buttondesign">Login</button>
     </form>
   </div>
 </div>

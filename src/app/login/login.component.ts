@@ -13,6 +13,6 @@ export class LoginComponent {
   });
   constructor() {}
   onSubmit() {
-    console.log(this.loginForm.value);
+    localStorage.setItem('username', this.loginForm.value.username);
   }
 }
