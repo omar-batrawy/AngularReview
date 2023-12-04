@@ -13,12 +13,12 @@ const routes: Routes = [
       import('../app/aboutus/aboutus.module').then((m) => m.AboutusModule),
   },
   {
-    path: '/auth/login',
+    path: 'auth/login',
     loadChildren: () =>
       import('../app/login/login.module').then((m) => m.LoginModule),
   },
   {
-    path: '/toDolist',
+    path: 'toDolist',
     loadChildren: () =>
       import('../app/todolist/todolist.module').then((m) => m.TodolistModule),
   },

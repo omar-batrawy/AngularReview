@@ -2,14 +2,15 @@
   <img
     src="./../../assets/Image/download-removebg-preview.png"
     alt="404"
-    class="image"
+    class="image login"
+    (click)="navigateTo('/')"
   />
   <div class="navelement">
     <div (click)="navigateTo('/')">Home</div>
     <div (click)="navigateTo('/appointment')">Appointment</div>
-    <div (click)="navigateTo('/todo-list')">Todo List</div>
-    <div (click)="navigateTo('/about-us')">About us</div>
+    <div (click)="navigateTo('/toDolist')">Todo List</div>
+    <div (click)="navigateTo('/aboutus')">About us</div>
   </div>
 
-  <div>Login</div>
+  <div (click)="navigateTo('/auth/login')" class="login">Login</div>
 </div>
