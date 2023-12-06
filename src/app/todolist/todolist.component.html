@@ -1,1 +1,43 @@
-<p>todolist works!</p>
+<div class="upperpart">
+  <div>
+    <h1>Drag and Drop</h1>
+    <p>Drag and drop between two lists</p>
+    <input type="text" id="newitem" [(ngModel)]="newItem" />
+    <button (click)="addtodo()">Add</button>
+  </div>
+</div>
+<div class="container">
+  <div class="example-container">
+    <h2>To do</h2>
+
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListConnectedTo]="[doneList]"
+      [cdkDropListData]="todo"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let item of todo">
+        <div class="example-box" cdkDrag>{{ item }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[todoList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div *ngFor="let item of done">
+        <div class="example-box" cdkDrag>{{ item }}</div>
+      </div>
+    </div>
+  </div>
+</div>
