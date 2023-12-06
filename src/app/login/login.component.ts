@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,9 @@ export class LoginComponent {
     username: new FormControl(),
     password: new FormControl(),
   });
-  constructor() {}
+  constructor(private router: Router) {}
   onSubmit() {
     localStorage.setItem('username', this.loginForm.value.username);
+    this.router.navigate(['']);
   }
 }
