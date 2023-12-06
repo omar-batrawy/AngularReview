@@ -10,3 +10,94 @@
   justify-content: flex-end;
   margin: 1rem;
 }
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 900px;
+  margin-left: 200px;
+}
+
+.btn:hover {
+  background-color: #00aaff;
+  color: white;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  width: 100%;
+}
+
+tr:nth-child(even) {
+  background-color: #8dd2f588;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Gray back layer */
+  display: none; /* Initially hidden */
+  z-index: 1000; /* To bring the modal on top of other elements */
+}
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-dialog {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;
+  height: auto;
+  max-width: 800px; /* Set the max width of the modal content */
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.form {
+  width: 100%;
+  margin-right: 400px;
+}
+
+.modal .btn:hover {
+  background-color: #d7c907;
+  color: white;
+}
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.modal-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  gap: 1rem;
+}
+.buttonstyle {
+  background-color: #295f96;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.buttonstyle:hover {
+  background-color: #ffffff;
+  color: #295f96;
+}
