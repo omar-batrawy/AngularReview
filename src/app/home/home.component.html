@@ -1,5 +1,92 @@
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{ display: displayStyle }"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title"><b>Add Product</b></h4>
+      </div>
+      <div class="modal-body">
+        <form #f="ngForm" class="modal-body">
+          <div>
+            <label>Image</label>
+            <input
+              type="text"
+              class="form-control"
+              id="image"
+              name="image"
+              placeholder="Enter Image"
+              [(ngModel)]="selectedproduct.image"
+            />
+          </div>
+          <div>
+            <label>Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="Title"
+              name="Title"
+              placeholder="Enter Name"
+              [(ngModel)]="selectedproduct.title"
+            />
+          </div>
+          <div>
+            <label>Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="phone"
+              name="phone"
+              min="0"
+              placeholder="Enter Description"
+              [(ngModel)]="selectedproduct.description"
+            />
+          </div>
+          <div>
+            <label>Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="Price"
+              name="Price"
+              min="0"
+              placeholder="Enter Price"
+              [(ngModel)]="selectedproduct.price"
+            />
+          </div>
+          <div>
+            <label>Category</label>
+            <input
+              type="text"
+              class="form-control"
+              id="category"
+              name="category"
+              min="0"
+              placeholder="Enter Category"
+              [(ngModel)]="selectedproduct.category"
+            />
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="buttonstyle" (click)="addNewProduct()">
+          Add Product
+        </button>
+        <button type="button" class="buttonstyle" (click)="closePopup()">
+          close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="upperpage">
-  <button mat-fab extended color="basic">Add Product</button>
+  <button mat-fab extended color="basic" (click)="openPopup()">
+    Add Product
+  </button>
 </div>
 <div class="productpage">
   <div *ngFor="let customer of products">

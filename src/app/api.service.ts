@@ -18,4 +18,20 @@ export class ApiService {
     console.log(products);
     return products;
   };
+
+  async addNewProduct(oneproduct: product): Promise<product[]> {
+    try {
+      const product: any = await this.httpClient
+        .post<product[]>(
+          `${this.PHP_API_SERVER}/products`,
+          JSON.stringify(oneproduct)
+        )
+        .toPromise();
+      console.log('Product added successfully:', product);
+      return product;
+    } catch (error) {
+      console.error('Error adding product:', error);
+      throw error;
+    }
+  }
 }
