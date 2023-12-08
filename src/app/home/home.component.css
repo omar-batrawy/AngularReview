@@ -101,3 +101,6 @@ tr:nth-child(even) {
   background-color: #ffffff;
   color: #295f96;
 }
+.product-card {
+  background-color: aqua;
+}
