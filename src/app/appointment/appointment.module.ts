@@ -3,12 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AppointmentRoutingModule } from './appointment-routing.module';
 
-
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule,
-    AppointmentRoutingModule
-  ]
+  imports: [CommonModule, AppointmentRoutingModule],
 })
-export class AppointmentModule { }
+export class AppointmentModule {}
