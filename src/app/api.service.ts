@@ -19,6 +19,14 @@ export class ApiService {
     return products;
   };
 
+  getoneproduct = async (id: number): Promise<product> => {
+    let oneproduct: any = await this.httpClient
+      .get<product>(`${this.PHP_API_SERVER}/products/` + id)
+      .toPromise();
+    console.log(oneproduct);
+    return oneproduct;
+  };
+
   async addNewProduct(oneproduct: product): Promise<product[]> {
     try {
       const product: any = await this.httpClient
