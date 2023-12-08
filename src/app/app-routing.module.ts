@@ -8,6 +8,13 @@ const routes: Routes = [
       import('../app/home/home.module').then((m) => m.HomeModule),
   },
   {
+    path: 'product/:id',
+    loadChildren: () =>
+      import('../app/oneprudct/oneprudct-routing.module').then(
+        (m) => m.OneprudctRoutingModule
+      ),
+  },
+  {
     path: 'aboutus',
     loadChildren: () =>
       import('../app/aboutus/aboutus.module').then((m) => m.AboutusModule),
