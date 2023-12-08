@@ -15,6 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { TestcardComponent } from './testcard/testcard.component';
+import { OneprudctComponent } from './oneprudct/oneprudct.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { MatButtonModule } from '@angular/material/button';
     HomeComponent,
     TodolistComponent,
     CardComponent,
+    TestcardComponent,
+    OneprudctComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,4 @@
-<p>appointment works!</p>
+<app-testcard (dataEmitted)="abc($event)"></app-testcard>
+<button (click)="shouwoutput()">show output</button>
+<div *ngIf="names == []">No Data available</div>
+<div *ngFor="let item of names">{{ item }}</div>
