@@ -1,4 +1,4 @@
-<div class="product-card">
+<div class="product-card" (click)="navigateTo('/product/' + product.id)">
   <img src="{{ product.image }}" alt="{{ product.title }}" class="image" />
   <h5 class="truncated-title">{{ product.title }}</h5>
   <p class="truncated-text">{{ product.description }}</p>
