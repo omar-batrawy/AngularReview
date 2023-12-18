@@ -36,6 +36,13 @@ const routes: Routes = [
         (m) => m.AppointmentModule
       ),
   },
+  {
+    path: 'map',
+    loadChildren: () =>
+      import('../app/map/map.module').then(
+        (m) => m.MapModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -37,6 +37,9 @@ import FeatureTemplates from '@arcgis/core/widgets/FeatureTemplates.js';
 import Fullscreen from '@arcgis/core/widgets/Fullscreen.js';
 import { expand } from 'rxjs';
 import Locate from '@arcgis/core/widgets/Locate.js';
+import RouteLayer from '@arcgis/core/layers/RouteLayer.js';
+import NavigationToggle from '@arcgis/core/widgets/NavigationToggle.js';
+import Popup from '@arcgis/core/widgets/Popup.js';
 @Component({
   selector: 'app-aboutus',
   templateUrl: './aboutus.component.html',
@@ -54,10 +57,12 @@ export class AboutusComponent {
         id: 'f2e9b762544945f390ca4ac3671cfa72',
       },
     });
+    const routeLayer = new RouteLayer();
     const view = new MapView({
       map: webmap,
       container: 'viewDiv',
       center: [-118.80543, 34.027],
+
       zoom: 13,
     });
 
@@ -158,13 +163,14 @@ export class AboutusComponent {
         view: view,
       }),
     });
-    const directionexpand = new Expand({
-      expandIcon: 'bear-left',
-      view: view,
-      content: new Directions({
-        view: view,
-      }),
-    });
+
+    // const directionexpand = new Expand({
+    //   expandIcon: 'bear-left',
+    //   view: view,
+    //   content: new Directions({
+    //     view: view,
+    //   }),
+    // });
     const ElevationProfileExpand = new Expand({
       expandIcon: 'antenna-height',
       view: view,
@@ -179,6 +185,7 @@ export class AboutusComponent {
         view: view,
       }),
     });
+
     const zoomexpand = new Expand({
       expandIcon: 'zoom-in-fixed',
       view: view,
@@ -214,27 +221,12 @@ export class AboutusComponent {
       }),
     });
     const locateexpand = new Expand({
-      expandIcon: 'locate',
+      expandIcon: 'gps-off',
       view: view,
       content: new Locate({
         view: view,
       }),
     });
-    // const params = {
-    //   layer: povLayer,
-    //   field: "POP_POVERTY",
-    //   normalizationField: "TOTPOP_CY",
-    //   numBins: 30
-    // };
-
-    // histogram(params)
-    //   .then(function(histogramResult) {
-    //      const histogram = Histogram.fromHistogramResult(histogramResult);
-    //      histogram.container = "histogram";
-    //   })
-    //    .catch(function(error) {
-    //      console.log("there was an error: ", error);
-    //    });
 
     view.ui.add(
       [
@@ -255,7 +247,7 @@ export class AboutusComponent {
     );
     view.ui.add(
       [
-        directionexpand,
+        // directionexpand,
         ElevationProfileExpand,
         zoomexpand,
         fullscreenexpand,
@@ -271,8 +263,8 @@ export class AboutusComponent {
     let Secondview = new SceneView({
       container: 'viewDivtwo',
       map: new Map({
-        basemap: 'satellite',
-        ground: 'world-elevation',
+        basemap: 'topo-vector',
+        layers: [routeLayer],
       }),
       environment: {
         weather: {
@@ -298,8 +290,26 @@ export class AboutusComponent {
       }),
       group: 'top-right',
     });
+    const directionexpand = new Expand({
+      expandIcon: 'bear-left',
+      view: Secondview,
+      content: new Directions({
+        view: Secondview,
+        layer: routeLayer,
+      }),
+    });
+    const NavigationToggleexpand = new Expand({
+      expandIcon: 'compass',
+      view: Secondview,
+      content: new NavigationToggle({
+        view: Secondview,
+      }),
+    });
 
-    Secondview.ui.add([weatherExpand, daylightExpand], 'top-right');
+    Secondview.ui.add(
+      [weatherExpand, daylightExpand, directionexpand, NavigationToggleexpand],
+      'top-right'
+    );
 
     //third map
 

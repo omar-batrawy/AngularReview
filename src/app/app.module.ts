@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { TestcardComponent } from './testcard/testcard.component';
 import { OneprudctComponent } from './oneprudct/oneprudct.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { OneprudctComponent } from './oneprudct/oneprudct.component';
     CardComponent,
     TestcardComponent,
     OneprudctComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
