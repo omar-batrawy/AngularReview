@@ -1,3 +1,15 @@
-<div id="viewDiv" class="mapview"></div>
-<div id="templatesDiv"></div>
-<div id="tableDiv"></div>
+<div id="viewDivtwo" class="mapview"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-12 col-md-6 form-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Pick a date"
+        bsDatepicker
+        [bsConfig]="bsConfig"
+        (bsValueChange)="onDateChange($event)"
+      />
+    </div>
+  </div>
+</div>
