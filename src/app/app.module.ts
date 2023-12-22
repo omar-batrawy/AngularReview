@@ -18,6 +18,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { TestcardComponent } from './testcard/testcard.component';
 import { OneprudctComponent } from './oneprudct/oneprudct.component';
 import { MapComponent } from './map/map.component';
+import { ElevationmapComponent } from './elevationmap/elevationmap.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { MapComponent } from './map/map.component';
     TestcardComponent,
     OneprudctComponent,
     MapComponent,
+    ElevationmapComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { MapComponent } from './map/map.component';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    BsDatepickerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
