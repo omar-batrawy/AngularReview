@@ -42,4 +42,23 @@ export class ApiService {
       throw error;
     }
   }
+  // https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=39.099724&lon=-94.578331&dt=1643803200&appid={API key}
+
+  getWeather = async (lat: any, lon: any, dt: any): Promise<any> => {
+    try {
+      const response = await this.httpClient
+        .get<any>(
+          `https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=${lat}&lon=${lon}&dt=${dt}&appid=b60c6144910dcba70ec6e4958651a801`
+        )
+        .toPromise();
+
+      const weather = response?.data[0]?.weather[0]?.main;
+
+      console.log(`Weather on ${dt}`, weather);
+      return weather;
+    } catch (error) {
+      console.error('Error fetching weather:', error);
+      throw error;
+    }
+  };
 }
