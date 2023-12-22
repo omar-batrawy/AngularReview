@@ -20,6 +20,15 @@ export class AboutusComponent {
   selectedDate?: Date;
   bsConfig?: Partial<BsDatepickerConfig>;
   Secondview: any;
+  humidity?: number;
+  pressure?: number;
+  temp?: number;
+  wind_deg?: number;
+  wind_speed?: number;
+  visibility?: number;
+  clouds?: number;
+  sunrise?: number;
+  sunset?: number;
 
   constructor(private apiService: ApiService) {
     this.bsConfig = {
@@ -45,10 +54,16 @@ export class AboutusComponent {
       35.5018,
       this.convertToUnixEpoch(this.selectedDate)
     );
+    console.log('weather', this.weather);
+    this.humidity = this.weather?.humidity;
+    this.pressure = this.weather?.pressure;
+    this.temp = this.weather?.temp;
+
+    this.wind_speed = this.weather?.wind_speed;
 
     if (this.Secondview) {
-      const mappedType = this.weatherMapping[this.weather];
-
+      const mappedType = this.weatherMapping[this.weather?.weather[0]?.main];
+      console.log('test', this.weather?.weather[0]?.main);
       if (mappedType) {
         this.Secondview.environment.weather = {
           type: mappedType,

@@ -52,7 +52,7 @@ export class ApiService {
         )
         .toPromise();
 
-      const weather = response?.data[0]?.weather[0]?.main;
+      const weather = response?.data[0];
 
       console.log(`Weather on ${dt}`, weather);
       return weather;

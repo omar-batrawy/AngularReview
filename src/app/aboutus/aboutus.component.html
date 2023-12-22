@@ -1,6 +1,5 @@
-<div id="viewDivtwo" class="mapview"></div>
 <div class="container">
-  <div class="row">
+  <div class="Description">
     <div class="col-xs-12 col-12 col-md-6 form-group">
       <input
         type="text"
@@ -11,5 +10,12 @@
         (bsValueChange)="onDateChange($event)"
       />
     </div>
+    <div class="Descriptiongrid">
+      Humidity: {{ humidity }}%<br />
+      Pressure: {{ pressure }} hPa <br />
+      Temperature: {{ temp }}°C <br />
+      Wind Speed: {{ wind_speed }} m/s
+    </div>
   </div>
+  <div id="viewDivtwo" class="mapview"></div>
 </div>
