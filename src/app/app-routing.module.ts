@@ -39,8 +39,13 @@ const routes: Routes = [
   {
     path: 'map',
     loadChildren: () =>
-      import('../app/map/map.module').then(
-        (m) => m.MapModule
+      import('../app/map/map.module').then((m) => m.MapModule),
+  },
+  {
+    path: 'elevationmap',
+    loadChildren: () =>
+      import('../app/elevationmap/elevationmap.module').then(
+        (m) => m.ElevationmapModule
       ),
   },
 ];
