@@ -6,7 +6,6 @@ import Weather from '@arcgis/core/widgets/Weather.js';
 import Daylight from '@arcgis/core/widgets/Daylight.js';
 import NavigationToggle from '@arcgis/core/widgets/NavigationToggle.js';
 import { ApiService } from '../api.service';
-import { BsDatepickerConfig } from 'ngx-bootstrap/datepicker';
 
 @Component({
   selector: 'app-aboutus',
@@ -18,36 +17,31 @@ export class AboutusComponent {
   searchvariable?: any;
   weather?: any;
   selectedDate?: Date;
-  bsConfig?: Partial<BsDatepickerConfig>;
   Secondview: any;
   humidity?: number;
   pressure?: number;
   temp?: number;
-  wind_deg?: number;
   wind_speed?: number;
-  visibility?: number;
-  clouds?: number;
-  sunrise?: number;
-  sunset?: number;
+  img?: string;
 
-  constructor(private apiService: ApiService) {
-    this.bsConfig = {
-      dateInputFormat: 'YYYY-MM-DD',
-      containerClass: 'theme-default',
-    };
-  }
+  constructor(private apiService: ApiService) {}
 
   convertToUnixEpoch(date: any): number {
     return Math.floor(date.getTime() / 1000);
   }
-
   onDateChange(event: any): void {
-    this.selectedDate = event;
-    const unixTimestamp = this.convertToUnixEpoch(this.selectedDate);
-    console.log('Unix Timestamp:', unixTimestamp);
-    this.updateWeather();
+    const dateString: string = (event.target as HTMLInputElement).value!;
+    const selectedDate = new Date(dateString);
+    if (!isNaN(selectedDate.getTime())) {
+      this.selectedDate = selectedDate;
+      const unixTimestamp = this.convertToUnixEpoch(this.selectedDate);
+      console.log('Unix Timestamp:', unixTimestamp);
+      this.updateWeather();
+    } else {
+      console.error('Invalid date:', dateString);
+    }
   }
-
+  // /https://openweathermap.org/img/wn/icon/@2x.png
   async updateWeather() {
     this.weather = await this.apiService.getWeather(
       33.8938,
@@ -58,8 +52,8 @@ export class AboutusComponent {
     this.humidity = this.weather?.humidity;
     this.pressure = this.weather?.pressure;
     this.temp = this.weather?.temp;
-
     this.wind_speed = this.weather?.wind_speed;
+    this.img = this.weather?.weather[0]?.icon;
 
     if (this.Secondview) {
       const mappedType = this.weatherMapping[this.weather?.weather[0]?.main];
@@ -78,7 +72,7 @@ export class AboutusComponent {
     Clouds: 'cloudy',
     Rain: 'rainy',
     Clear: 'sunny',
-    Thunderstorm: 'foggy',
+    Thunderstorm: 'rainy',
     Snow: 'snowy',
     Fog: 'foggy',
   };
@@ -103,25 +97,6 @@ export class AboutusComponent {
       expanded: true,
     });
 
-    const daylightExpand = new Expand({
-      view: this.Secondview,
-      content: new Daylight({
-        view: this.Secondview,
-      }),
-      group: 'top-right',
-    });
-
-    const NavigationToggleexpand = new Expand({
-      expandIcon: 'compass',
-      view: this.Secondview,
-      content: new NavigationToggle({
-        view: this.Secondview,
-      }),
-    });
-
-    this.Secondview.ui.add(
-      [weatherExpand, daylightExpand, NavigationToggleexpand],
-      'top-right'
-    );
+    this.Secondview.ui.add([weatherExpand], 'top-right');
   }
 }
