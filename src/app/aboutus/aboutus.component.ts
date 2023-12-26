@@ -3,8 +3,6 @@ import Map from '@arcgis/core/Map';
 import Expand from '@arcgis/core/widgets/Expand.js';
 import SceneView from '@arcgis/core/views/SceneView.js';
 import Weather from '@arcgis/core/widgets/Weather.js';
-import Daylight from '@arcgis/core/widgets/Daylight.js';
-import NavigationToggle from '@arcgis/core/widgets/NavigationToggle.js';
 import { ApiService } from '../api.service';
 
 @Component({
