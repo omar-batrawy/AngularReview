@@ -73,6 +73,8 @@ export class AboutusComponent {
     Thunderstorm: 'rainy',
     Snow: 'snowy',
     Fog: 'foggy',
+    Mist: 'foggy',
+    Drizzle: 'rainy',
   };
 
   async ngOnInit() {

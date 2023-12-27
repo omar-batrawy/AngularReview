@@ -20,6 +20,10 @@ import { OneprudctComponent } from './oneprudct/oneprudct.component';
 import { MapComponent } from './map/map.component';
 import { ElevationmapComponent } from './elevationmap/elevationmap.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HttpClientModule,
     MatButtonModule,
     BsDatepickerModule.forRoot(),
+    MatDatepickerModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

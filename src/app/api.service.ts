@@ -43,7 +43,7 @@ export class ApiService {
     }
   }
   // https://api.openweathermap.org/data/3.0/onecall/timemachine?lat=39.099724&lon=-94.578331&dt=1643803200&appid={API key}
-
+  //set the weather service in config file
   getWeather = async (lat: any, lon: any, dt: any): Promise<any> => {
     try {
       const response = await this.httpClient
